@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="number" id="numero1" placeholder="Informe numero" />
+    <input type="number" id="numero2" placeholder="Informe numero" />
+    <button onclick="onCalcular()">Mostrar no paragrafo</button>
+    <button onclick="onCalcular2()">Mostrar como alert</button>
+    <hr />
+    <p></p>
+    <script>
+      function onCalcular() {
+        var a = parseInt(document.getElementById("numero1").value)
+        var b = parseInt(document.getElementById("numero2").value)
+        calcular(a, b, mostraEmParagrafo);
+      }
+
+      function onCalcular2() {
+        var a = parseInt(document.getElementById("numero1").value)
+        var b = parseInt(document.getElementById("numero2").value)
+        calcular(a, b, mostraComoAlert);
+      }
+
+      function calcular(n1, n2, mostraEmParagrafo) {
+        let x = n1 + n2;
+        mostraEmParagrafo(x);
+      }
+
+      function mostraEmParagrafo(valor) {
+        document.getElementsByTagName("p")[0].innerHTML = `Soma: ${valor}`;
+      }
+
+      function mostraComoAlert(valor) {
+        alert(valor);
+      }
+    </script>
+  </body>
+</html>
