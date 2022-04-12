@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Cine Capgemini</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .livre{background: greenyellow}
+            .ocupado{background: red}
+        </style>    
+    </head>
+    <body>
+        <div>Cine Capgemini</div>
+        <hr />
+        <label>Informe quantas cadeiras</label>
+        <input type="number" id="totalCadeiras" />
+        <input type="button" value="Crie a sala" onclick="criar();verLivres()" />
+        <hr />
+        <div id="principal">
+            
+        </div>
+        <hr />
+        <p id="info"></p>
+
+
+
+
+        <script>
+            function criar(){
+               var totalCadeiras = document.getElementById("totalCadeiras");
+               //pega o total de cadeiras do usuario
+               for(i=0;i< totalCadeiras.value; i++){
+                    var lugar = document.createElement("input"); // criar o input
+                    lugar.setAttribute("type","button"); //criar o botão 
+                    lugar.setAttribute("value",(i+1)); // adc o valor 
+                    lugar.setAttribute("class","livre"); //todas vão estar livres 
+                    lugar.setAttribute("onclick","clique(this)"); // onclick pra chamar a função 
+                    
+                    var principal = document.getElementById("principal");
+                    principal.appendChild(lugar);
+                }
+            }
+            
+            function verLivres(){
+                var l = document.getElementsByClassName("livre");
+                var o = document.getElementsByClassName("ocupado");
+               
+                var msg = "Total livres: " + l.length;
+                    msg += "<br />";
+                    msg += "Total ocupados: " + o.length;        
+                
+                document.getElementById("info").innerHTML = msg;
+            }
+            
+            function clique(el){
+                var classeAtual = el.getAttribute("class");
+                if(classeAtual === "livre"){
+                    el.setAttribute("class","ocupado");
+                }else{
+                  el.setAttribute("class","livre");   
+                }
+               verLivres(); 
+            }
+            
+        </script>    
+    </body>
+</html>

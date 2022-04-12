@@ -18,7 +18,7 @@
 
         let myPromise = new Promise(function(ok, erro) {
             let requisicao = new XMLHttpRequest();
-            requisicao.open('GET', './dados/frutas.txt');
+            requisicao.open('GET', './data/frutas.txt');
             requisicao.onload = function() {
                 if (requisicao.status == 200) {
                     ok(requisicao.responseText)
