@@ -13,7 +13,8 @@
               <th>Nome</th>
               <th>Fone</th>
               <th>Email</th>
-              <th>Ações</th>
+              <th>Editar</th>
+              <th>Excluir</th>
           </tr>
       </thead>
       <tbody>
@@ -43,10 +44,19 @@
                             <td> ${minhaLista[indice].fone}</td>
                             <td> ${minhaLista[indice].email}</td>
                             <td> <a href='editar.html?id=${minhaLista[indice].id}'>editar</a></td>
-                        </tr>
+                            <td> <a href='excluir.html?id=${minhaLista[indice].id}'>excluir</a></td>
+
+                        </tr>,3
+
                       `
           }
           document.getElementsByTagName("tbody")[0].innerHTML = trs;
+      }
+
+      function apagar(idcontato) {
+            let ob = new Contato();
+            ob.excluir(idcontato);
+            load();
       }
     </script>
   </body>

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./scripts/classes.js"></script>
-    <link rel="stylesheet" href="./estilos/estilos.css" />
+    <script src="./script/classes.js"></script>
+    <link rel="stylesheet" href="./style/estilos.css" />
   </head>
 
   <body onload="pegarParametro()">
@@ -21,32 +21,50 @@
 
       <div class="botoes">
         <button onclick="gravar()" class="salvar">Salvar</button>
+        <button onclick="apagar()" class="salvar">Excluir</button>
+
         <button class="cancelar">Cancelar</button>
       </div>
     </div>
-
     <script>
+      function pegarParametro() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let idcontato = urlParams.get("id");
 
-function pegarParametro() {
+        let ob = new Contato();
+        ob.consultarPeloId(idcontato, preencheForm);
+      }
 
-const urlParams = new URLSearchParams(window.location.search)
-let idContato = urlParams.get('id')
+      function preencheForm(data) {
+        let obj = JSON.parse(data);
+        document.getElementsByTagName("input")[0].value = obj.id;
+        document.getElementsByTagName("input")[1].value = obj.nome;
+        document.getElementsByTagName("input")[2].value = obj.fone;
+        document.getElementsByTagName("input")[3].value = obj.email;
+      }
 
-let ob = new Contato()
-ob.ConsultarPeloId(idContato, preencheForm)
+      function gravar() {
 
-}
+        var id = document.getElementsByTagName("input")[0].value;
+        var nome = document.getElementsByTagName("input")[1].value;
+        var fone = document.getElementsByTagName("input")[2].value;
+        var email = document.getElementsByTagName("input")[3].value;
+        
+        let ob = new Contato(id, nome, fone, email)
 
-function preencheForm(data){
+        ob.update()
 
-let obj = JSON.parse(data)
-document.getElementsByTagName("input")[0].value = obj.id
-document.getElementsByTagName("input")[1].value = obj.nome
-document.getElementsByTagName("input")[2].value = obj.fone
-document.getElementsByTagName("input")[3].value = obj.email
-}
 
-            
+        window.history.back()
+
+
+      }
+
+      function apagar(){
+
+        let ob = new Contato();
+        ob.excluir(document.getElementsByTagName("input")[0].value)
+      }
 
     </script>
   </body>

@@ -29,6 +29,35 @@ class Contato{
         .then(x => x.text())
         .then(data => display(data))
     }
+
+    consultarPeloId(idContato, display) {
+        fetch(`${urlBase}/${idContato}`)
+            .then(x => x.text())
+            .then(data => display(data))
+    }
+
+    update(){
+
+        fetch(`${urlBase}/${this.id}`, {
+
+            method: 'PUT',
+            body: JSON.stringify(this),
+            headers: {
+                'Content-type': 'Application/json'
+            }
+        })
+
+    }
+
+    excluir(idContato, retorno){
+
+        fetch('{$urlBase)/${idContato}', {
+
+            method: 'DELETE'
+        })
+
+    }
+
 }
 
 
