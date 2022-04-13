@@ -49,14 +49,12 @@ class Contato{
 
     }
 
-    excluir(idContato, retorno){
-
-        fetch('{$urlBase)/${idContato}', {
-
+    excluir(idcontato) {
+        fetch(`${urlBase}/${idcontato}`, {
             method: 'DELETE'
         })
-
     }
+
 
 }
 
