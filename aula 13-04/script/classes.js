@@ -22,6 +22,16 @@ class Contato{
         })
         .catch(erro => console.log(erro))
     }
+
+    consultarTodos(display){
+
+        fetch(urlBase)
+        .then(x => x.text())
+        .then(data => display(data))
+    }
 }
+
+
+
 
 //comando json json-server --watch db.json
