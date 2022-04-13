@@ -15,19 +15,13 @@ class Contato{
         fetch(urlBase, {
 
             method: 'POST',
-            body: this,
+            body: JSON.stringify(this),
             headers: {
                 'Content-type': 'Application/json'
             }
         })
+        .catch(erro => console.log(erro))
     }
 }
 
-function gravar() {
-    var nome = document.getElementsByTagName("input")[0].value
-    var fone = document.getElementsByTagName("input")[1].value
-    var email = document.getElementsByTagName("input")[2].value
-
-    let obj = new Contato(0, nome, fone, email)
-    obj.salvar()
-}
+//comando json json-server --watch db.json

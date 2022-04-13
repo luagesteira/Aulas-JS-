@@ -1,10 +1,22 @@
 {
-    "contatos": [
-      {
-        "id": 1,
-        "nome": "Joao",
-        "fone": "123",
-        "email": "joao@gmail.com"
-      }
-    ]
-  }
+  "contatos": [
+    {
+      "id": 1,
+      "nome": "Joao",
+      "fone": "123",
+      "email": "joao@gmail.com"
+    },
+    {
+      "id": 2,
+      "nome": "rwerwe",
+      "fone": "rwerwe",
+      "email": "rwerwer"
+    },
+    {
+      "id": 3,
+      "nome": "dasdasd",
+      "fone": "sadasdas",
+      "email": "dasdas"
+    }
+  ]
+}
