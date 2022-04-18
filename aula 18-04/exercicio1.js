@@ -21,9 +21,24 @@ class pessoaFisica extends Pessoa{
 
         super(nome);
         super(contato);
-        this.cpf = cpf;
+        this._cpf = cpf;
+    }
+     
+    get cpf(){
+
+        return this._cpf
     }
 
+    set cpf(value){
+
+        if(value.length == 14){
+
+            this._cpf = value
+        }else{
+
+            console.log('CPF inválido')
+        }
+    }
 
     show() {
         this.display();
