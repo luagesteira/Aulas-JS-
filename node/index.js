@@ -1,18 +1,37 @@
 var http = require('http')
+var meumodulo = require('./modulos/funcoes')
 var fs = require('fs')
+var url = require('url')
 
-http.createServer(function(req,res){
+//meumodulo.chamadaFuncao(res)
 
-    fs.readFile('index.html',
-    
-        function(err, data){
-            
-            res.writeHead(200, {'Content-type' : 'text/Html'});
-            res.write(data)
-            return res.end()
+function cadastrar(res) {
+    fs.readFile('cadastro.html', (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(data)
+        res.end()
+    })
+}
 
-        }
-    )
-    console.log('servidor rodando')
+function consultar(res) {
+    fs.readFile('consulta.html', (err, data) => {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.write(data)
+        res.end()
+    })
+}
 
-}).listen(8080)
+
+http.createServer(function(req, res) {
+    var adr = url.parse(req.url, true);
+    if (adr.pathname === '/index.html') {
+        cadastrar(res)
+    }
+
+    if (adr.pathname === '/consulta.html') {
+        consultar(res)
+    }
+
+}).listen(15000)
+
+console.log('servidor rodando')
